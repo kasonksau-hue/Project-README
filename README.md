@@ -34,9 +34,10 @@ Sequence Maintenance
 > <img width="4271" height="2386" alt="mermaid-diagram-2026-07-26-181810" src="https://github.com/user-attachments/assets/899e394e-c1ec-4afb-b3d4-967601bab278" />
 
 ## 3. 系統架構 Architecture
+
 | 元件 Component | 技術 Tech | Port | 職責 Responsibility |
 |-----------|------|------|----------------|
-| **frontend** | HTML / CSS / vanilla JS、d3-hierarchy、Lightweight Charts | static | Treemap heatmap 與 candlestick UI，non building steps |
+| **frontend** | HTML / CSS / JavaScript、d3-hierarchy、Lightweight Charts | static | Treemap heatmap 與 candlestick UI，non building steps |
 | **stock-data** | Spring Boot、Java、JPA、Redis | 8081 | 系統資料來源（system of record）——資料模型、排程、運算、前端 `/api/*`（及內部 `/data/*`）|
 | **data-provider** | Spring Boot、Java | 8082 | 無狀態（stateless），封裝 Finnhub API and token 安全性 |
 | **PostgreSQL** | Supabase（managed）| 5432 | Save 股票（symbols）、公司 profiles、歷史日線 OHLC |
