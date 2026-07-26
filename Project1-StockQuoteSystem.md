@@ -44,7 +44,7 @@ Sequence Maintenance
 | **Redis** | AWS EC2 localhost | 6379 | 即時報價與公司資料快取（兩種快取策略，non-relational）|
 | **python-etl** | Python、pandas、SQLAlchemy | — | 由外部 API 載入 symbols；Cron job每日增量載入 OHLC |
 
-## 4. 技術堆疊（Technology Stack）
+## 4. 技術堆疊（Tech Stack）
 
 - **Spring Boot 4.1 / Java 21** — 兩個後端服務
 - **Spring Web MVC** — REST controller（兩個服務使用）
