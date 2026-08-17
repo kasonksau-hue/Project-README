@@ -18,9 +18,10 @@
 - **響應式設計** — 5 Typography Hierarchy 適配 Desktop 至 Mobile device.
 
 資料每約 1.2 秒自動刷新（`setInterval`），以反映即時報價變化。
-> <img width="1917" height="967" alt="image" src="https://github.com/user-attachments/assets/eda0ff01-6237-4285-84f1-bc8222339bb7" />
+> <img width="1918" height="967" alt="image" src="https://github.com/user-attachments/assets/fdbb14b7-4e26-4778-9695-97d4feab538c" />
 
-> <img width="1917" height="955" alt="image" src="https://github.com/user-attachments/assets/11dd3e54-b848-4547-b46b-1d8b9d2bba80" />
+> <img width="1906" height="963" alt="image" src="https://github.com/user-attachments/assets/75b3b369-661d-41e5-931a-7cabc8798dc0" />
+
 https://kason-stock-headmap.vercel.app/
 
 ## 2. 系統概觀 Flow
