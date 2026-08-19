@@ -21,9 +21,11 @@
 - **響應式設計** — 5 Typography Hierarchy 適配 Desktop 至 Mobile device.
 
 資料每約 1.2 秒自動刷新（`setInterval`），以反映即時報價變化。
-> <img width="1918" height="967" alt="image" src="https://github.com/user-attachments/assets/fdbb14b7-4e26-4778-9695-97d4feab538c" />
+> <img width="1907" height="963" alt="image" src="https://github.com/user-attachments/assets/bf76f68b-5f51-4b77-ab56-0f867a060649" />
 
-> <img width="1906" height="963" alt="image" src="https://github.com/user-attachments/assets/75b3b369-661d-41e5-931a-7cabc8798dc0" />
+> <img width="1918" height="966" alt="image" src="https://github.com/user-attachments/assets/95a1459a-616f-446f-afd6-d3e50d6bd0d6" />
+
+> <img width="1917" height="963" alt="image" src="https://github.com/user-attachments/assets/0e07beb8-6da0-4d8b-9d82-bce7359825dc" />
 
 https://kason-stock-headmap.vercel.app/
 
@@ -44,17 +46,16 @@ Sequence - AI Assistant
 - Structured prompt deliver to LLM for reasoning.
 - Generate a response governed by system instructions.
 
-### 需求 → 設計決策 Requirements-driven trade-offs
-(每一個重要的設計決策都由特定的系統約束或需求驅動，而非隨意選擇)
+### 3. 需求 → 設計決策 Requirements-driven trade-offs
 
 | 限制 Constraint | 設計決策 Decision | 取捨 Trade-off |
 |---|---|---|
-| Free-tier API 限流（60 calls/min） | Round-robin `@Scheduled` job，每 1.2 秒輪詢一檔（約 50 calls/min） | 用「更新頻率」換「限流穩定性」——犧牲極致即時性，換取成本控制 |
+| Free-tier API 限流（60 calls/min） | Round-robin `@Scheduled` job，每 1.2 秒輪詢一檔（約 50 calls/min） | 用「更新頻率」換「限流穩定性」—犧牲極致即時性，換取無需額外成本 |
 | EC2 free tier 僅 1GB RAM | AI 對話歷史後端截斷、IP rate limit、快取 TTL 控管 | 犧牲部分使用彈性（無法無限對話），換取服務不會因單一使用者而受影響/癱瘓 |
 | 第三方 LLM 額度/穩定性不保證 | Gemini 呼叫失敗自動降級（從think mode轉為fast mode重試） | 犧牲該次回答的深度，換取功能不會 100% 失敗 |
 | AI 若給具體買賣建議 → 潛在合規/法律風險 | System Prompt 明確限制：不給標的/目標價/進出場時機 | 犧牲「更像真人顧問」的體驗，換取產品定位在安全的合規邊界內 |
 
-## 3. 系統架構 Architecture
+## 4. 系統架構 Architecture
 
 | 元件 Component | 技術 Tech | Port | 職責 Responsibility |
 |-----------|------|------|----------------|
@@ -65,7 +66,7 @@ Sequence - AI Assistant
 | **Redis** | AWS EC2 localhost | 6379 | 即時報價cache 與 公司資料cache (rate limiting) |
 | **python-etl** | Python、pandas、SQLAlchemy | — | 由外部 API 載入 Symbols；Daily OHLC data pipeline |
 
-## 4. 技術堆疊（Tech Stack）
+## 5. 技術堆疊（Tech Stack）
 
 - **Spring Boot 4.1 / Java 21** — 兩個後端服務
 - **Spring Web MVC** — REST controller（兩個服務使用）
