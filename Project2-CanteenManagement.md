@@ -42,7 +42,7 @@
 
 ## 3. 系統概觀 Flow
 Sequence Login (JWT/Bearer Token/Google Login)
-> <img width="3496" height="4934" alt="mermaid-diagram-2026-08-27-182008" src="https://github.com/user-attachments/assets/de2e190b-78d4-4826-a5a7-bb4221486ea5" />
+> <img width="3640" height="4820" alt="mermaid-diagram-2026-08-28-013234" src="https://github.com/user-attachments/assets/2c9fe07e-8c15-42f8-a00e-2de4f8d896ae" />
 
 Sequence Ordering (以**顧客瀏覽菜單**透過各層的路徑讀取請求)
 > <img width="3004" height="3912" alt="mermaid-diagram-2026-08-27-190846" src="https://github.com/user-attachments/assets/32d444ee-a35f-4c08-84ca-085779444c2c" />
