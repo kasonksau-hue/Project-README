@@ -11,7 +11,7 @@
 |---|---|
 | 午膳時段人潮擠塞、排隊時間長 | 線上**預先下單**，過了截止時間自動順延隔日（pre-order） |
 | 現金收找費時、易出錯 | **電子錢包**（Wallet）+ Stripe 線上增值，下單即扣款 |
-| 廚房靠紙單／口頭傳遞，容易漏單 | **Kitchen Board** 三欄，15 秒自動更新 |
+| 廚房靠紙單／口頭傳遞，容易漏單 | **Kitchen Order Board**，15 秒自動更新 |
 | 顧客不知道餐點完成時間 | **訂單追蹤**時間軸，10 秒輪詢即時狀態 |
 | 餐點賣完仍被下單、庫存靠人手記錄 | 下單時**即時扣減庫存**，管理端庫存警示（≤5） |
 | 缺乏營運數據 | **Dashboard**：營收、訂單量、熱門餐點圖表 |
@@ -28,7 +28,7 @@
 - 個人資料與密碼修改
 
 ### 廚房 Kitchen
-- 三欄看板（已下單 / 準備中 / 可取餐），15 秒自動更新
+- 訂單看板（已下單 / 準備中 / 可取餐），15 秒自動更新
 - 一鍵推進訂單狀態：接單 → 準備 → 可取餐 → 完成取餐
 - 拒絕訂單（自動回補庫存並退款）
 
@@ -42,17 +42,18 @@
 
 ## 3. 系統概觀 Flow
 Sequence Login (JWT/Bearer Token/Google Login)
-> <img width="3328" height="4216" alt="mermaid-diagram-2026-07-27-013824" src="https://github.com/user-attachments/assets/7e46eaf0-3983-4907-84b7-07bc51feb233" />
+> <img width="3496" height="4934" alt="mermaid-diagram-2026-08-27-182008" src="https://github.com/user-attachments/assets/de2e190b-78d4-4826-a5a7-bb4221486ea5" />
 
 Sequence Ordering (以**顧客瀏覽菜單**透過各層的路徑讀取請求)
-> <img width="3004" height="4014" alt="mermaid-diagram-2026-07-27-013524" src="https://github.com/user-attachments/assets/9d47fa1f-1c4d-4ab0-88a3-b7d7f87ce3a7" />
+> <img width="3004" height="3912" alt="mermaid-diagram-2026-08-27-190846" src="https://github.com/user-attachments/assets/32d444ee-a35f-4c08-84ca-085779444c2c" />
+
 
 ## 4. 系統架構 Architecture
 
 - **前後端分離**（Decoupled SPA-less Frontend + REST API）— 兩個獨立 repo、獨立部署
 - **分層架構**（Layered Architecture）— Controller → Service → Repository → Entity
 - **介面／實作分離** — 每個 Controller 與 Service 皆有 interface（`Impl` 與 `*Operation`）
-- **Stateless 認證** — 無伺服器端 Session，可直接水平擴展
+- **Stateless** — 無伺服器端 Session，可直接水平擴展
 
 | # | 元件 Component | 技術 Tech | Port | 職責 Responsibility |
 |---|---|---|---|---|
@@ -73,6 +74,6 @@ Sequence Ordering (以**顧客瀏覽菜單**透過各層的路徑讀取請求)
 - **Stripe Java SDK 32.1.0** — Checkout Session 建立與查證，**僅用於錢包增值**
 - **Google Identity Services (GIS)** — 社交登入，透過 Client ID
 - **Lombok / Maven / JUnit 5 + Mockito** — 單元測試
-- **前端狀態** — `sessionStorage`（登入 session）+ `localStorage`（購物車）+ `api.js` Bearer Token
+- **前端狀態** — `sessionStorage`（登入 metadata）+ `localStorage`（購物車）+ HttpOnly Cookie
 - **部署** — Railway（後端 PaaS，機密全由環境變數注入）
 
