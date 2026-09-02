@@ -41,7 +41,10 @@
 - **系統設定**：訂餐時間窗設定、建立／刪除廚房帳號
 
 ## 3. 系統概觀 Flow
-Sequence Login (JWT/Bearer Token/Google Login)
+User Flowchart
+> <img width="1704" height="1205" alt="canteen-flow drawio" src="https://github.com/user-attachments/assets/3525c047-a654-499e-b16f-edae2df12540" />
+
+Sequence Login (Password-based Authentication and OpenID Connect(OIDC) via Google)
 > <img width="3640" height="4820" alt="mermaid-diagram-2026-08-28-013234" src="https://github.com/user-attachments/assets/2c9fe07e-8c15-42f8-a00e-2de4f8d896ae" />
 
 Sequence Ordering (以**顧客瀏覽菜單**透過各層的路徑讀取請求)
