@@ -72,11 +72,11 @@ Sequence Ordering (以**顧客瀏覽菜單**透過各層的路徑讀取請求)
 - **Spring Web MVC** — REST controller，介面（`*Operation`）與實作（`Impl`）分離
 - **Spring Data JPA + Hibernate 7.2** — Entity 持久化；
 - **Spring Security** — Filter Chain、集中式 URL 授權、BCrypt 密碼雜湊；
-- **spring-security-oauth2-jose** — 以 Google JWKS 驗證 ID Token 的簽章 
+- **Spring-Security-Oauth2-Jose** — 以 Google JWKS 驗證 ID Token 的簽章 
 - **PostgreSQL** — 系統的資料真實來源 (Railway)
 - **Stripe Java SDK 32.1.0** — Checkout Session 建立與查證，**僅用於錢包增值**
 - **Google Identity Services (GIS)** — 社交登入，透過 Client ID
 - **Lombok / Maven / JUnit 5 + Mockito** — 單元測試
-- **前端狀態** — `sessionStorage`（登入 metadata）+ `localStorage`（購物車）+ HttpOnly Cookie
-- **部署** — Railway（後端 PaaS，機密全由環境變數注入）
+- **前端狀態** — `sessionStorage`（登入 metadata）+ `localStorage`（購物車）； (Token save HttpOnly Cookie)
+- **部署** — Railway（後端 PaaS，Confidentiality injected by environmental variables）
 
