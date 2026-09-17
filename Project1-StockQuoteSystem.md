@@ -71,14 +71,14 @@ Sequence - AI Assistant
 - **Spring Boot 4.1 / Java 21** — 兩個後端服務
 - **Spring Web MVC** — REST controller（兩個服務使用）
 - **Spring Data JPA + Hibernate** — stock-data-app Entity 持久化
-- **Spring Data Redis** — 即時報價（手動 `RedisTemplate`）+ 公司資料（`@Cacheable`）+ AI對話快取
+- **Spring Data Redis** — 即時報價（`RedisTemplate`）+ 公司資料（`@Cacheable`）+ AI對話快取
 - **Spring Scheduler** — 每日公司資料刷新、即時報價輪詢
 - **PostgreSQL** — 系統的資料真實來源（生產環境 Supabase 託管）
 - **Redis** — 即時報價 + 公司資料快取
 - **Google Gemini API** — AI 聊天助手核心 System Prompt 設計
 - **Python（pandas + SQLAlchemy）** — ETL 腳本（Extract、Transform、Load）
-- **前端繪圖** — **d3-hierarchy** and **TradingView Lightweight Charts**（treemap 版面 + candlestick）；
-  HTML / CSS / JS 分檔，純靜態、non building steps 
-- **Docker Compose** — Localhost一次Run測試
+- **前端繪圖** — **d3-hierarchy** and **TradingView Lightweight Charts**（treemap 版面 + candlestick chart）；
+  HTML / CSS / JS 純靜態 
+- **Docker Compose** — Localhost Run Test
 - **部署** — AWS EC2（systemd + localhost Redis）、Supabase（PostgreSQL）、Vercel（前端）、
   GitHub Actions（CI/CD）
