@@ -5,7 +5,7 @@
 > 個人專案，目標是在**成本限制的 Infrastructure**下，模擬一套接近生產環境水準的即時股票資料系統。
 > 系統會從外部資料供應商收集即時報價、公司基本資料以及 OHLCV 歷史資料，
 > 將資料儲存於 PostgreSQL，並以 Redis 快取即時報價與公司資料加速讀取，
-> 最後以一個會自動更新的 Heatmap、Candlestick 圖形介面，以及一個能理解當下市場數據的 AI 聊天助手呈現。
+> 最後透過WebSocket即時串流自動更新在 Heatmap、Candlestick 圖形介面，以及一個能理解當下市場數據的 AI 聊天助手呈現。
 >
 > 
 ## 1. 專案簡介 Overview
@@ -20,7 +20,7 @@
   補足資訊。
 - **響應式設計** — 5 Typography Hierarchy 適配 Desktop 至 Mobile device.
 
-資料每約 1.2 秒自動刷新（`setInterval`），以反映即時報價變化。
+資料每秒自動刷新，以反映即時報價變化。
 > <img width="1907" height="963" alt="image" src="https://github.com/user-attachments/assets/bf76f68b-5f51-4b77-ab56-0f867a060649" />
 
 > <img width="1918" height="966" alt="image" src="https://github.com/user-attachments/assets/95a1459a-616f-446f-afd6-d3e50d6bd0d6" />
@@ -50,7 +50,8 @@ Sequence - AI Assistant
 
 | 限制 Constraint | 設計決策 Decision | 取捨 Trade-off |
 |---|---|---|
-| Free-tier API 限流（60 calls/min） | Round-robin `@Scheduled` job，每 1.2 秒輪詢一檔（約 50 calls/min） | 用「更新頻率」換「限流穩定性」—犧牲極致即時性，換取無需額外成本 |
+| Free-tier WebSocket訂閱上限, 缺少昨收/高低等基準欄位 | 市值前50大用WebSocket更新，只覆寫現價並即時重算漲跌 % | 以處理高流量數據及緩衝，換取接近即時性數據 |
+| Free-tier API 限流（60 calls/min） | Round-robin `@Scheduled` job，每 1.2 秒輪詢一檔（約 50 calls/min） | 用「更新頻率」換「限流穩定性」— 無需額外成本 |
 | EC2 free tier 僅 1GB RAM | AI 對話歷史後端截斷、IP rate limit、快取 TTL 控管 | 犧牲部分使用彈性（無法無限對話），換取服務不會因單一使用者而受影響/癱瘓 |
 | 第三方 LLM 額度/穩定性不保證 | Gemini 呼叫失敗自動降級（從think mode轉為fast mode重試） | 犧牲該次回答的深度，換取功能不會 100% 失敗 |
 | AI 若給具體買賣建議 → 潛在合規/法律風險 | System Prompt 明確限制：不給標的/目標價/進出場時機 | 犧牲「更像真人顧問」的體驗，換取產品定位在安全的合規邊界內 |
@@ -60,7 +61,7 @@ Sequence - AI Assistant
 | 元件 Component | 技術 Tech | Port | 職責 Responsibility |
 |-----------|------|------|----------------|
 | **frontend** | HTML / CSS / JavaScript、d3-hierarchy、Lightweight Charts | static | Treemap heatmap, candlestick and AI 分析助手 UI|
-| **stock-data** | Spring Boot、Java、JPA、Redis | 8081 | 系統資料來源 -資料模型、排程、運算、前端 `/api/*` 及內部 `/data/*`|
+| **stock-data** | Spring Boot、Java、JPA、Redis | 8081 | 系統資料來源 -資料模型、排程、運算、更新api/* 及內部data/*、接收WebSocket串流；透過SSE推送前端；|
 | **data-provider** | Spring Boot、Java | 8082 | Stateless，External API integration and token security |
 | **PostgreSQL** | Supabase（managed）| 5432 | Persistent Stock data、公司 profiles、歷史日線 OHLC |
 | **Redis** | AWS EC2 localhost | 6379 | 即時報價cache 與 公司資料cache (rate limiting) |
