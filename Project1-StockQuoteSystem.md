@@ -35,9 +35,10 @@ https://kason-stock-headmap.vercel.app/
 兩個 **資料儲存（Data Store）** 組成，並與四個 **外部資料供應商（包括Google Gemini API and External Data APIs）互動**
 
 Sequence Read
-> <img width="2928" height="2728" alt="mermaid-diagram-2026-07-26-175139" src="https://github.com/user-attachments/assets/a4c002ba-fbf8-4d76-8679-3a128bfc38c3" />
+> <img width="6105" height="8192" alt="Untitled diagram-2026-09-23-192818" src="https://github.com/user-attachments/assets/20a2d70c-8a8a-45eb-b756-49a6c279c7be" />
+
 Sequence Maintenance
-> <img width="4271" height="2386" alt="mermaid-diagram-2026-07-26-181810" src="https://github.com/user-attachments/assets/899e394e-c1ec-4afb-b3d4-967601bab278" />
+> <img width="8192" height="5533" alt="Untitled diagram-2026-09-23-194602" src="https://github.com/user-attachments/assets/c8acde54-4f74-4037-b9f0-b5d97b9dc064" />
 
 Sequence - AI Assistant
 - User Browser → Ask（question / history）→  Mode determined by rule-based classifier.
@@ -53,7 +54,7 @@ Sequence - AI Assistant
 | Free-tier WebSocket訂閱上限, 缺少昨收/高低等基準欄位 | 市值前50大用WebSocket更新，只覆寫現價並即時重算漲跌 % | 以處理高流量數據及緩衝，換取接近即時性數據 |
 | Free-tier API 限流（60 calls/min） | Round-robin `@Scheduled` job，每 1.2 秒輪詢一檔（約 50 calls/min） | 用「更新頻率」換「限流穩定性」— 無需額外成本 |
 | EC2 free tier 僅 1GB RAM | AI 對話歷史後端截斷、IP rate limit、快取 TTL 控管 | 犧牲部分使用彈性（無法無限對話），換取服務不會因單一使用者而受影響/癱瘓 |
-| 第三方 LLM 額度/穩定性不保證 | Gemini 呼叫失敗自動降級（從think mode轉為fast mode重試） | 犧牲該次回答的深度，換取功能不會 100% 失敗 |
+| 第三方 LLM 額度限制 | Gemini 呼叫失敗自動降級（從think mode轉為fast mode重試） | 犧牲該次回答的深度，換取功能不會 100% 失敗 |
 | AI 若給具體買賣建議 → 潛在合規/法律風險 | System Prompt 明確限制：不給標的/目標價/進出場時機 | 犧牲「更像真人顧問」的體驗，換取產品定位在安全的合規邊界內 |
 
 ## 4. 系統架構 Architecture
