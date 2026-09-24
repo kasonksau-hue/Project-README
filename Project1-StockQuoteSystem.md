@@ -21,11 +21,11 @@
 - **響應式設計** — 5 Typography Hierarchy 適配 Desktop 至 Mobile device.
 
 資料每秒自動刷新，以反映即時報價變化。
-> <img width="1907" height="963" alt="image" src="https://github.com/user-attachments/assets/bf76f68b-5f51-4b77-ab56-0f867a060649" />
+> <img width="1917" height="966" alt="image" src="https://github.com/user-attachments/assets/a1e9a346-b06e-49fe-9a80-81f05b90acfa" />
 
-> <img width="1918" height="966" alt="image" src="https://github.com/user-attachments/assets/95a1459a-616f-446f-afd6-d3e50d6bd0d6" />
+> <img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/6b7ef952-4f95-4af9-9cb4-53ef57b33643" />
 
-> <img width="1917" height="963" alt="image" src="https://github.com/user-attachments/assets/0e07beb8-6da0-4d8b-9d82-bce7359825dc" />
+> <img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/01a460a1-4800-4df7-b1a8-c40b6b25ade0" />
 
 https://kason-stock-headmap.vercel.app/
 
