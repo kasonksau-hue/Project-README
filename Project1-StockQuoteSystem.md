@@ -27,7 +27,7 @@
 
 > <img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/01a460a1-4800-4df7-b1a8-c40b6b25ade0" />
 
-https://kason-stock-headmap.vercel.app/
+https://kason-stock-heatmap.vercel.app/
 
 ## 2. 系統概觀 Flow
 
