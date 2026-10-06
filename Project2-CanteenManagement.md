@@ -50,6 +50,7 @@ Sequence Login (Password-based Authentication and OpenID Connect(OIDC) via Googl
 Sequence Ordering (以**顧客瀏覽菜單**透過各層的路徑讀取請求)
 > <img width="3004" height="3912" alt="mermaid-diagram-2026-08-27-190846" src="https://github.com/user-attachments/assets/32d444ee-a35f-4c08-84ca-085779444c2c" />
 
+https://hk-restaurant-system.vercel.app/
 
 ## 4. 系統架構 Architecture
 
