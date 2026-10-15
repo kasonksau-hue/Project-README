@@ -1,7 +1,7 @@
 # PROJECT_1: STOCK MARKET INTELLIGENCE PLATFORM
 
 ## 系統設計 Introduction
-> 一個US股票市場 **Heatmap（熱力圖）+ Candlestick（K 線圖）+ AI Assistant（分析助手）** 的網頁應用程式，涵蓋整個SDLC -
+> 一個 US&HK 股票市場 **Heatmap（熱力圖）+ Candlestick（K 線圖）+ AI Assistant（分析助手）** 的網頁應用程式，涵蓋整個SDLC -
 > 個人專案，目標是在**成本限制的 Infrastructure**下，模擬一套接近生產環境水準的即時股票資料系統。
 > 系統會從外部資料供應商收集即時報價、公司基本資料以及 OHLCV 歷史資料，
 > 將資料儲存於 PostgreSQL，並以 Redis 快取即時報價與公司資料加速讀取，
