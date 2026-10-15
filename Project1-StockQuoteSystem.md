@@ -10,7 +10,7 @@
 > 
 ## 1. 專案簡介 Overview
 
-本平台以互動式 Treemap 呈現 S&P 500 市值 **Top 100** 股票的當日表現：
+本平台以互動式 Treemap 呈現 US S&P500 and HK Stock 市值 **Top 100** & 股票的當日表現：
 
 - **方塊面積大小（tile Area）** 對應市值（Market capitalization）
 - **方塊顏色深淺（tile Color）** 對應當日漲跌幅（Daily % change，綠紅升跌感知色階）
@@ -51,7 +51,7 @@ Sequence - AI Assistant
 
 | 限制 Constraint | 設計決策 Decision | 取捨 Trade-off |
 |---|---|---|
-| Free-tier WebSocket訂閱上限, 缺少昨收/高低等基準欄位 | 市值前50大用WebSocket更新，只覆寫現價並即時重算漲跌 % | 以處理高流量數據及緩衝，換取接近即時性數據 |
+| Free-tier WebSocket訂閱上限, 缺少昨收/高低等基準欄位 | US Stock市值前50大用WebSocket更新，只覆寫現價並即時重算漲跌 % | 以處理高流量數據及緩衝，換取接近即時性數據 |
 | Free-tier API 限流（60 calls/min） | Round-robin `@Scheduled` job，每 1.2 秒輪詢一檔（約 50 calls/min） | 用「更新頻率」換「限流穩定性」— 無需額外成本 |
 | EC2 free tier 僅 1GB RAM | AI 對話歷史後端截斷、IP rate limit、快取 TTL 控管 | 犧牲部分使用彈性（無法無限對話），換取服務不會因單一使用者而受影響/癱瘓 |
 | 第三方 LLM 額度限制 | Gemini 呼叫失敗自動降級（從think mode轉為fast mode重試） | 犧牲該次回答的深度，換取功能不會 100% 失敗 |
